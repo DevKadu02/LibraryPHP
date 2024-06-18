@@ -1,0 +1,120 @@
+/* Geral */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("img-lagoa.jpg");
+    background-position: center;
+    background-size: cover;
+    padding: 2rem;
+}
+
+#s1 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #102F5e;
+}
+
+/* Formulários */
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+form button {
+    background-color: #102F5e;
+    color: #FFF;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #395169;
+}
+
+.hide {
+    display: none;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+button {
+    background-color: #FDFDFD;
+    color: #102F5e;
+    border: 2px solid #102F5e;
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #102F5e;
+    color: #FFF;
+}
+
+button i {
+    color: #102F5e;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.delete-button {
+    text-align: center;
+    background-color: #ffffff;
+    border: 2px solid #D9534F;
+    color: #D9534F;
+
+    transition: background-color 0.4s, color 0.4s;
+}
+
+.delete-button:hover {
+    background-color: #D9534F;
+    color: #FFF;
+}
+.b2{
+    display: flex;
+}

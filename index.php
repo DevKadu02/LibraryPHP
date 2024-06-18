@@ -2,7 +2,6 @@
 include 'db.php';
 
 if (isset($_POST['action'])) {
-    // Ação de Adicionar
     if ($_POST['action'] == "add") {
         $nome = $_POST['nome'];
         $data_lancamento = $_POST['data_lancamento'];
@@ -11,9 +10,7 @@ if (isset($_POST['action'])) {
         
         $sql = "INSERT INTO livros (nome, data_lancamento, numero_paginas, autor) VALUES ('$nome', '$data_lancamento', '$numero_paginas' ,'$autor')";
         $conn->query($sql);
-    }
-    // Ação de Atualizar
-    elseif ($_POST['action'] == "update") {
+    } elseif ($_POST['action'] == "update") {
         $id = $_POST['id'];
         $nome = $_POST['nome'];
         $data_lancamento = $_POST['data_lancamento'];
@@ -22,9 +19,7 @@ if (isset($_POST['action'])) {
 
         $sql = "UPDATE livros SET nome='$nome', data_lancamento='$data_lancamento', numero_paginas='$numero_paginas' , autor= '$autor' WHERE id=$id";
         $conn->query($sql);
-    }
-    // Ação de Deletar
-    elseif ($_POST['action'] == "delete") {
+    } elseif ($_POST['action'] == "delete") {
         $id = $_POST['id'];
         
         $sql = "DELETE FROM livros WHERE id=$id";
@@ -38,11 +33,11 @@ if (isset($_POST['action'])) {
 <head>
     <meta charset="UTF-8">
     <title>CRUD Library</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Biblioteca CRUD</h1>
+    <span id="s1">Biblioteca CRUD</span>
     
-    <!-- Formulário de Adição -->
     <form action="index.php" method="POST">
         <input type="hidden" name="action" value="add">
         <label for="nome">Nome:</label>
@@ -52,13 +47,12 @@ if (isset($_POST['action'])) {
         <label for="numero_paginas">Número de Páginas:</label>
         <input type="number" name="numero_paginas" required>
         <label for="autor">Autor:</label>
-        <input type="nome" name="autor" required>
+        <input type="text" name="autor" required>
         <button type="submit">Adicionar Livro</button>
     </form>
     
-    <!-- Lista de Livros -->
     <h2>Livros</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -83,21 +77,19 @@ if (isset($_POST['action'])) {
                         <form style='display:inline-block;' action='index.php' method='POST'>
                             <input type='hidden' name='action' value='delete'>
                             <input type='hidden' name='id' value='{$row['id']}'>
-                            <button type='submit'>Deletar</button>
+                            <button type='submit' class='delete-button'>Deletar</button>
                         </form>
                         <button onclick='editBook({$row['id']}, \"{$row['nome']}\", \"{$row['data_lancamento']}\", \"{$row['numero_paginas']}\", \"{$row['autor']}\")'>Editar</button>
-
                     </td>
                 </tr>";
             }
         } else {
-            echo "<tr><td colspan='5'>Nenhum livro encontrado</td></tr>";
+            echo "<tr><td colspan='6'>Nenhum livro encontrado</td></tr>";
         }
         ?>
     </table>
     
-    <!-- Formulário de Edição -->
-    <div id="editForm" style="display:none;">
+    <div id="editForm" class="hide">
         <h2>Editar Livro</h2>
         <form action="index.php" method="POST">
             <input type="hidden" name="action" value="update">
@@ -109,7 +101,7 @@ if (isset($_POST['action'])) {
             <label for="numero_paginas">Número de Páginas:</label>
             <input type="number" name="numero_paginas" id="editNumeroPaginas" required>
             <label for="autor">Autor:</label>
-            <input type="nome" name="autor" id="editAutor" required>
+            <input type="text" name="autor" id="editAutor" required>
             <button type="submit">Atualizar Livro</button>
         </form>
     </div>
